@@ -1,0 +1,69 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+{% if current_user.is_authenticated %}
+Edit Info
+{% else %}
+Sign Up
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<h1>Edit Info</h1>
+{% else %}
+<h1>Sign Up</h1>
+{% endif %}
+<hr>
+<br>
+
+<form action = "{{url_for('auth.edit_info') if current_user.is_authenticated else url_for('auth.sign_up')}}" method = "POST">
+
+    {{form.hidden_tag()}}
+
+    <div>
+    {{form.first_name.label(class = "form-label")}}
+    {{form.first_name(class = "form-control", value = current_user.first_name, style = "text-align: center")}}
+    {% for error in form.first_name.errors %}
+    <small style = "color:red;"> {{error}} </small>
+    {% endfor %}
+    </div>
+    <br>
+    <div>
+    {{form.last_name.label(class = "form-label")}}
+    {{form.last_name(class = "form-control", value = current_user.last_name, style = "text-align: center")}}
+    {% for error in form.last_name.errors %}
+    <small style = "color:red;"> {{error}} </small>
+    {% endfor %}
+    </div>
+    <br>
+    <div>
+    {{form.email.label(class = "form-label")}}
+    {{form.email(class = "form-control", value = current_user.email, style = "text-align: center")}}
+    {% for error in form.email.errors %}
+    <small style = "color:red;"> {{error}} </small>
+    {% endfor %}
+    </div>
+    <br>
+    <div>
+    {{form.password.label(class = "form-label")}}
+    {{form.password(class = "form-control", style = "text-align: center")}}
+    {% for error in form.password.errors %}
+    <small style = "color:red;"> {{error}} </small>
+    {% endfor %}
+    </div>
+    <br>
+    <div>
+    {{form.confirm_password.label(class = "form-label")}}
+    {{form.confirm_password(class = "form-control", style = "text-align: center")}}
+    {% for error in form.confirm_password.errors %}
+    <small style = "color:red;"> {{error}} </small>
+    {% endfor %}
+    </div>
+    <br>
+    <div>
+    {{form.submit(class = "btn btn-primary form-control")}}
+    </div>
+
+</form>
+
+{% endblock %}
