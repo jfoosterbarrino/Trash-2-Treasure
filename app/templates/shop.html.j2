@@ -1,0 +1,55 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+Shop
+{% endblock %}
+
+{% block content %}
+<div id = "shop">
+<div id = "shop-bg">
+<h1 style = "text-align:center"><strong>Buried Treasure</strong></h1>
+<hr>
+<br>
+
+
+<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+  <label class="btn btn-outline-primary" for="btnradio1" style = "background-color:#000b49"><a href = "{{url_for('main.shop')}}" style = "color:#FEE2C5 ">All</a></label>
+
+{% for type in types %}
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+  <label class="btn btn-outline-light" for="btnradio1"  style = "background-color:#000b49"><a href = "{{url_for('main.types', id = type.id)}}"  style = "color:#FEE2C5 ">{{type.name.title()}}</a></label>
+{% endfor %}
+
+</div>
+<br>
+<br>
+<br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+{% for product in products %}
+  <div class="col">
+    <div class="card h-100" id = "shop-cart">
+      <img src= {{product.image}} class="card-img-top" style = "height:200px">
+      <div class="card-body">
+        <h5 class="card-title" style = "color: #FEE2C5"><strong>{{product.name}}</strong></h5>
+        <hr>
+        <p class="card-text" style = "color: #000b49"><strong>${{product.price}}</strong></p>
+        <p class="card-text" style = "color: #000b49">{{product.desc}}</p>
+        <a href = "{{url_for('main.add', id = product.id)}}"><button type="button" class="btn btn-light" style = "color:#000b49">Add to Cart</button></a>
+      </div>
+      {# <div class="card-footer" style = "color: #FEE2C5">
+        <small class="text-muted">{{product.created_on}}</small>
+      </div> #}
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+
+
+
+</div>
+</div>
+{% endblock %}

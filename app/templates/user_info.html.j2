@@ -1,0 +1,37 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+User Info
+{% endblock %}
+
+{% block content %}
+<div id = "user-info">
+
+<h1 style = "text-align:center">Customer Info</h1>
+<hr>
+<br>
+<div id="user-card">
+<div class="card" style="width: 18rem;" id ="card-info">
+  <img src={{user.icon}} class="card-img-top" alt="...">
+  <div class="card-body" id = "card-body">
+    <h5 class="card-title" ><strong>{{user.first_name}} {{user.last_name}}</strong></h5>
+    <p class="card-text">{{user.email}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+    
+    <p class="card-text" style = "color: #000b49"><strong>Current Cart Items</strong></p>
+        <hr>
+        {% for product in products %}
+        <p class="card-text" style = "color: #000b49">{{product.name}}</p>
+        {% endfor %}
+    
+    </li>
+    <li class="list-group-item" style = "color: #000b49"><strong>Total: {{total}}</strong></li>
+    <li class="list-group-item" style = "color: #000b49"><small class="text-muted">{{user.created_on}}</small></li>
+  </ul>
+</div>
+</div>
+
+
+
+{% endblock %}

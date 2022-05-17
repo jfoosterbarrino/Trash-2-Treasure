@@ -8,62 +8,70 @@ Sign Up
 {% endblock %}
 
 {% block content %}
+
+<div id = "signup-banner">
+<div id ="sign-up">
+<form action = "{{url_for('auth.edit_info') if current_user.is_authenticated else url_for('auth.sign_up')}}" method = "POST">
 {% if current_user.is_authenticated %}
 <h1>Edit Info</h1>
 {% else %}
-<h1>Sign Up</h1>
+<h1>Create a New Account</h1>
 {% endif %}
 <hr>
 <br>
 
-<form action = "{{url_for('auth.edit_info') if current_user.is_authenticated else url_for('auth.sign_up')}}" method = "POST">
-
     {{form.hidden_tag()}}
 
     <div>
-    {{form.first_name.label(class = "form-label")}}
-    {{form.first_name(class = "form-control", value = current_user.first_name, style = "text-align: center")}}
+    {# {{form.first_name.label(class = "form-label")}} #}
+    {{form.first_name(class = "form-control", value = current_user.first_name, placeholder = "First Name")}}
     {% for error in form.first_name.errors %}
     <small style = "color:red;"> {{error}} </small>
     {% endfor %}
     </div>
     <br>
     <div>
-    {{form.last_name.label(class = "form-label")}}
-    {{form.last_name(class = "form-control", value = current_user.last_name, style = "text-align: center")}}
+    {# {{form.last_name.label(class = "form-label")}} #}
+    {{form.last_name(class = "form-control", value = current_user.last_name, placeholder = "Last Name")}}
     {% for error in form.last_name.errors %}
     <small style = "color:red;"> {{error}} </small>
     {% endfor %}
     </div>
     <br>
     <div>
-    {{form.email.label(class = "form-label")}}
-    {{form.email(class = "form-control", value = current_user.email, style = "text-align: center")}}
+    {# {{form.email.label(class = "form-label")}} #}
+    {{form.email(class = "form-control", value = current_user.email, placeholder = "Email")}}
     {% for error in form.email.errors %}
     <small style = "color:red;"> {{error}} </small>
     {% endfor %}
     </div>
     <br>
     <div>
-    {{form.password.label(class = "form-label")}}
-    {{form.password(class = "form-control", style = "text-align: center")}}
+    {# {{form.password.label(class = "form-label")}} #}
+    {{form.password(class = "form-control", placeholder = "Password")}}
     {% for error in form.password.errors %}
     <small style = "color:red;"> {{error}} </small>
     {% endfor %}
     </div>
     <br>
     <div>
-    {{form.confirm_password.label(class = "form-label")}}
-    {{form.confirm_password(class = "form-control", style = "text-align: center")}}
+    {# {{form.confirm_password.label(class = "form-label")}} #}
+    {{form.confirm_password(class = "form-control", placeholder = "Confirm Password")}}
     {% for error in form.confirm_password.errors %}
     <small style = "color:red;"> {{error}} </small>
     {% endfor %}
     </div>
     <br>
     <div>
-    {{form.submit(class = "btn btn-primary form-control")}}
+    {{form.submit(class = "btn btn-dark form-control")}}
     </div>
+    <br>
+    {% if not current_user.is_authenticated %}
+    <p style = "text-align:center;">Already have an account? <strong><a href="{{url_for('auth.login')}}">Sign In</a></strong></p>
+    {% endif %}
 
 </form>
+</div>
+</div>
 
 {% endblock %}

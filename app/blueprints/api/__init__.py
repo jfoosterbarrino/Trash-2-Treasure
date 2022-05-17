@@ -2,4 +2,4 @@ from flask import Blueprint
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
-from . import auth_routes, shop_routes, models
+from . import auth_routes, type_routes, product_routes

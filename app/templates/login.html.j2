@@ -4,33 +4,51 @@ Login
 {% endblock %}
 {% block content %}
 
-<h1 style = "text-align: center">Login</h1>
-<hr>
-<br>
-<form action = "{{url_for('auth.login')}}" method = "POST">
+
+<div class="container" id = "login-banner">
+  <div class="row">
+    <div class="col" id ="login-left">
+    {# <a class="navbar-brand" href="{{url_for('main.index')}}"><img src ="https://res.cloudinary.com/dccf9vnoo/image/upload/v1652803294/T2T-logo_T2Tsquare_en_red_yfoje8.png" style = "height:100px;"></a> #}
+      <h2><strong>Sign in</strong></h2>
+    <br>
+      <form action = "{{url_for('auth.login')}}" method = "POST">
     {{form.hidden_tag()}}
     <div>
-    {{form.email.label(class = "form-label")}}
-    {{form.email(class = "form-control", style = "text-align: center")}}
+    {# {{form.email.label(class = "form-label")}} #}
+    {{form.email(class = "form-control", placeholder = "Email Address")}}
     {% for error in form.email.errors %}
     <small style = "color:red;"> {{error}} </small>
     {% endfor %}
     </div>
     <br>
     <div>
-    {{form.password.label(class = "form-label")}}
-    {{form.password(class = "form-control", style = "text-align: center")}}
+    {# {{form.password.label(class = "form-label")}} #}
+    {{form.password(class = "form-control", placeholder = "Password")}}
     {% for error in form.password.errors %}
     <small style = "color:red;"> {{error}} </small>
     {% endfor %}
     </div>
     <br>
     <div>
-    {{form.submit(class = "btn btn-primary form-control")}}
+    {{form.submit(class = "btn btn-dark form-control")}}
     </div>
+    <br>
+    <p style = "text-align: center">New to Trash 2 Treasure? <a href = "{{url_for('auth.sign_up')}}"><strong>Create an Account</strong></a></p>
 </form>
-<br>
-<p style = "text-align: center">Don't have an Account? <a href = "{{url_for('auth.sign_up')}}"><strong>Sign Up Here!</strong></a></p>
+
+    </div>
+    <div class="col" id = "login-right">
+      
+  <h5>Trash 2 Treasure E-Commerce Shop</h5>
+  <hr>
+  <h1><strong>One man's trash is another man's</strong></h1>
+  <h1 style = "color:#F66B0E;"><strong>TREASURE.</strong></h1>
+  <br>
+  <p><small>No charge, no obligations, nothing to cancel.*</small></p>
+
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}

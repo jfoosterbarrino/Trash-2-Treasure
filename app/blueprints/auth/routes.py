@@ -2,7 +2,7 @@ from . import bp as auth
 from app.models import Customer
 from .forms import LoginForm, SignUpForm, EditInfoForm
 from flask import request, redirect, render_template, flash, url_for
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, login_required, logout_user
 
 @auth.route('/login', methods=['GET','POST'])
 def login():
@@ -15,7 +15,7 @@ def login():
         if customer and customer.check_hashed_password(password):
             login_user(customer)
             flash('Successful Login! Welcome to E-Commerce!', 'success')
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.shop'))
         flash('Incorrect Email and/or Password. Try again.', 'danger')
         return render_template('login.html.j2', form =form)
     return render_template('login.html.j2', form = form)
@@ -70,5 +70,14 @@ def edit_info():
         except:
             flash('There was an unexpected error, please try again!','danger')
             return redirect(url_for('auth.edit_info'))
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.user_info'))
     return render_template('sign_up.html.j2', form = form)
+
+    
+@auth.route('/logout')
+@login_required
+def logout():
+    if current_user:
+        logout_user()
+        flash('You have been logged out', 'info')
+        return redirect(url_for('auth.login'))

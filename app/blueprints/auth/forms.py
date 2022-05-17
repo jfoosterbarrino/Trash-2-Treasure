@@ -7,7 +7,7 @@ from jinja2.utils import markupsafe
 class LoginForm(FlaskForm):
     email = StringField('Email Address', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
-    submit = SubmitField('Login')
+    submit = SubmitField('Sign In')
 
 class SignUpForm(FlaskForm):
     first_name = StringField('First Name', validators = [DataRequired()])
@@ -15,7 +15,7 @@ class SignUpForm(FlaskForm):
     email = StringField('Email', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators = [DataRequired(), EqualTo('password', message = "Passwords Must Match")])
-    submit = SubmitField('Sign Up')
+    submit = SubmitField('Create a New Account')
 
 class EditInfoForm(FlaskForm):
     first_name = StringField('First Name', validators = [DataRequired()])

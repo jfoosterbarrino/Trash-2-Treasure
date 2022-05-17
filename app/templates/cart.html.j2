@@ -1,0 +1,67 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+Cart
+{% endblock %}
+
+{% block content %}
+<div id ="cart">
+<h1 style = "text-align:center"><strong>Cart</strong></h1>
+    <hr>
+<div class="container">
+  <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+  <div class="row">
+    <div class="col-md-8">
+    
+    {% for product in products %}
+    
+    <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      
+      <img src={{product.image}} class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <hr>
+        <p class="card-text"><strong>{{product.desc}}</strong></p>
+        <p class="card-text"><strong>${{product.price}}</strong></p>
+        {# <p class="card-text">{{product.desc}}</p> #}
+        <a href = "{{url_for('main.delete', id = product.id)}}"><button type="button" class="btn btn-danger">Remove</button></a>
+        <br>
+        <hr>
+        <p class="card-text"><small class="text-muted">{{product.created_on}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    {% endfor %}
+    
+    </div>
+    <div class="col-6 col-md-4">
+    
+    <div class="card text-center">
+    <div class="card-body">
+    <h5 class="card-title">Order Summary</h5>
+    <hr>
+    {% for product in products %}
+    <p class="card-text">{{product.name}}: ${{product.price}}</p>
+    {% endfor %}
+    <br>
+    <p class="card-text"><strong>Total: ${{total}}</strong></p>
+    <a href="{{url_for('main.pay')}}" class="btn btn-primary">Pay</a>
+    <br>
+    <br>
+    <a href="{{url_for('main.shop')}}" class="btn btn-warning">Continue Shopping</a>
+    </div>
+    
+    </div>
+  </div>
+
+
+  
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,121 @@
+.container{
+    margin-top:50px;
+}
+
+footer{
+    background-color:  #000b49;
+    text-align: center;
+}
+body,html{
+    height: 100%;
+    margin:0px;
+}
+footer{
+    height: 30%;
+    color:white;
+    margin-top:50px;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+}
+
+#login-left{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    margin-right:100px;
+    margin-left:0px;
+    background-color:white;
+    border: 1px solid #000b49;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+#login-right{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    margin-left:100px;
+    margin-right:0px;
+    padding-top:20px;
+}
+
+#login-banner{
+    background-color:#FEE2C5;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #000b49;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+nav{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+}
+
+#sign-up{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    background-color:white;
+    border: 1px solid #000b49;
+    padding: 50px;
+}
+
+#signup-banner{
+    background-color:#FEE2C5;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #000b49;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#shop{
+    background-color:#FEE2C5;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #000b49;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+#cart{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    text-align: center;
+    background-color: #FEE2C5;
+    color: #000b49;
+    padding:50px;
+}
+
+#user-info{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    text-align: center;
+    background-color: #FEE2C5;
+    color: #000b49;
+    padding:50px;
+    
+}
+
+#user-card{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    display: flex;
+    justify-content: center;
+}
+
+#shop-cart{
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    background-color:#F66B0E;
+    border: 2px solid #000b49;
+    padding: 10px;
+}
+
+#card-info{
+    background-color: #000b49;
+    color: #FEE2C5;
+}
+
+
+
+
