@@ -40,6 +40,7 @@ def cart():
 def add(id):
     product = Product.query.get(id)
     current_user.add_to_cart(product)
+    flash(f"{product.name} was added to your cart", 'info')
     return redirect(url_for('main.shop'))
 
 @main.route('/delete/<int:id>')
@@ -47,12 +48,14 @@ def add(id):
 def delete(id):
     product = Product.query.get(id)
     current_user.del_from_cart(product)
+    flash(f"{product.name} was removed from your cart", 'warning')
     return redirect(url_for('main.cart'))
 
 @main.route('/pay')
 @login_required
 def pay():
     current_user.pay()
+    flash('Enjoy ! Thank you for shopping with Trash 2 Treasure!', 'success')
     return redirect(url_for('main.cart'))
 
 @main.route('/user_info')

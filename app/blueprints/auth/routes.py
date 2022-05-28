@@ -14,7 +14,7 @@ def login():
         customer = Customer.query.filter_by(email = email).first()
         if customer and customer.check_hashed_password(password):
             login_user(customer)
-            flash('Successful Login! Welcome to E-Commerce!', 'success')
+            flash('Successful Login! Welcome to Trash 2 Treasure!', 'success')
             return redirect(url_for('main.shop'))
         flash('Incorrect Email and/or Password. Try again.', 'danger')
         return render_template('login.html.j2', form =form)
@@ -24,28 +24,34 @@ def login():
 @auth.route('/sign_up', methods =['GET','POST'])
 def sign_up():
     form = SignUpForm()
-    if request.method == 'POST' and form.validate_on_submit():
-        new_user_data={
-            'first_name' : form.first_name.data.title(),
-            'last_name' : form.last_name.data.title(),
-            'email' : form.email.data.lower(),
-            'password' : form.password.data,
-            'icon' : f'https://avatars.dicebear.com/api/initials/{form.first_name.data[0]}{form.last_name.data[0]}.svg'
-        }
-
-        new_user_object = Customer()
-        new_user_object.from_dict(new_user_data)
-        new_user_object.save()
-
-        flash('Congratulations! You have successfully registered.','success')
-        return redirect(url_for('auth.login'))
-
-    elif request.method == 'GET':
-        return render_template('sign_up.html.j2', form = form)
-
+    u = Customer.query.filter_by(email = form.email.data).first()
+    if u:
+        flash('Email already registered', "danger")
+        return redirect(url_for('auth.sign_up'))
     else:
-        flash('Unsuccessful Login, Please Try Again Later','danger')
-        return render_template('sign_up.html.j2', form =form)
+
+        if request.method == 'POST' and form.validate_on_submit():
+            new_user_data={
+                'first_name' : form.first_name.data.title(),
+                'last_name' : form.last_name.data.title(),
+                'email' : form.email.data.lower(),
+                'password' : form.password.data,
+                'icon' : f'https://avatars.dicebear.com/api/initials/{form.first_name.data[0]}{form.last_name.data[0]}.svg'
+            }
+
+            new_user_object = Customer()
+            new_user_object.from_dict(new_user_data)
+            new_user_object.save()
+
+            flash('Congratulations! You have successfully registered.','success')
+            return redirect(url_for('auth.login'))
+
+        elif request.method == 'GET':
+            return render_template('sign_up.html.j2', form = form)
+
+        else:
+            flash('Unsuccessful Login, Please Try Again Later','danger')
+            return render_template('sign_up.html.j2', form =form)
 
 
 @auth.route('/edit_info', methods = ['GET','POST'])
