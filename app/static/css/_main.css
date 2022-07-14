@@ -1,20 +1,29 @@
 .container{
     margin-top:50px;
+    width: 100%;
+}
+.page-container{
+    position:relative;
+    min-height: 60vh;
 }
 
 footer{
     background-color:  #000b49;
     text-align: center;
+    height: 25vh;
+    color:white;
+    margin-top:50px;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    position: relative;
+    bottom:0%;
+    left:0%;
+    width: 100%;
+    
 }
 body,html{
     height: 100%;
     margin:0px;
-}
-footer{
-    height: 30%;
-    color:white;
-    margin-top:50px;
-    font-family: "Helvetica Neue",Helvetica,Arial;
+    width: 100%;
 }
 
 #login-left{
@@ -23,8 +32,7 @@ footer{
     margin-left:0px;
     background-color:white;
     border: 1px solid #000b49;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 30px;
     
 }
 #login-right{
@@ -35,18 +43,24 @@ footer{
 }
 
 #login-banner{
+    position:fixed;
+    top:40%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:90%;
     background-color:#FEE2C5;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 300px;
+    padding-right: 300px;
     padding-top: 50px;
+    margin-top: 50px;
     padding-bottom: 50px;
     color: #000b49;
     font-family: "Helvetica Neue",Helvetica,Arial;
-    margin-top: 50px;
-    margin-bottom: 100px;
+
 }
 nav{
     font-family: "Helvetica Neue",Helvetica,Arial;
+    height: 10vh;
 }
 
 #sign-up{
